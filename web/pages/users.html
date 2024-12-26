@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jsencrypt/bin/jsencrypt.min.js"></script>
+    <link href="/styles/common.css" rel="stylesheet">
+    <link href="/styles/user.css" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+
+    <h1>用户管理</h1>
+
+    <div class="table-container">
+        <table id="userTable" class="data-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>电话</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <div class="pagination" >
+            <button class="add-user-btn" onclick="showAddDialog()">添加用户</button>
+
+            <div style="display: flex; align-items: center;">
+                <button onclick="changePage(-1)">上一页</button>
+                <span id="currentPage">1</span>
+                <button onclick="changePage(1)">下一页</button>
+            </div>
+
+            <div class="search-container" style="display: flex; align-items: center; gap: 5px;">
+                <input type="text" id="searchInput" placeholder="按用户id搜索">
+                <button onclick="handleSearch()">搜索</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<div id="addEditDialog" class="dialog">
+    <div class="dialog-content">
+        <h2 id="dialogTitle">添加用户</h2>
+        <form id="userForm">
+            <label for="name">用户名：</label>
+            <input type="text" id="name" required>
+
+            <label for="tel">电话：</label>
+            <input type="text" id="tel" required>
+
+            <label for="email">邮箱：</label>
+            <input type="email" id="email" required>
+
+            <label for="age">年龄：</label>
+            <input id="age" name="age" type="number" required>
+
+            <label>性别：</label>
+            <div class="gender-options" style="display: flex; gap: 10px;">
+                <label>
+                    <input id="genderMale" type="radio" name="gender" value="male" required>
+                    <span>男</span>
+                </label>
+                <label>
+                    <input id="genderFemale" type="radio" name="gender" value="female" required>
+                    <span>女</span>
+                </label>
+            </div>
+
+            <label for="idcard">身份证号：</label>
+            <input id="idcard" name="idcard" type="text" required>
+
+            <label for="address">家庭住址：</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+
+            <label for="account">账号：</label>
+            <input id="account" name="account" type="text" required>
+
+            <label for="password">密码：</label>
+            <input id="password" name="password" type="password" required>
+
+            <button type="submit">保存</button>
+            <button type="button" onclick="closeDialog()">取消</button>
+        </form>
+    </div>
+</div>
+
+<div id="viewDialog" class="dialog">
+    <div class="dialog-content">
+        <h2>用户详情</h2>
+        <div id="userDetails"></div>
+        <button onclick="closeViewDialog()">关闭</button>
+    </div>
+</div>
+<script src="/js/autojs.js"></script>
+<script src="/js/users.js"></script>
+</body>
+</html>

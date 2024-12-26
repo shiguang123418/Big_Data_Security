@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/register.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsencrypt/bin/jsencrypt.min.js"></script>
+    <script src="/js/autojs.js"></script>
+    <script src="/js/register.js"></script>
+</head>
+<body>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div id="success-message" style="display: none;">注册成功！</div>
+    <div id="session-check" class="text-center" style="display: none;">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+        <p class="mt-4 text-gray-600">正在处理注册请求...</p>
+    </div>
+
+    <div id="register-form" class="card max-w-md w-full space-y-8">
+        <div class="card-header">
+            <h2 class="text-3xl font-bold text-center text-gray-900">注册</h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                创建您的账户以开始使用
+            </p>
+        </div>
+
+        <div class="card-body">
+            <form id="form" class="space-y-6">
+                <!-- 账号 -->
+                <div>
+                    <label for="account" class="form-label">账号</label>
+                    <input id="account" name="account" type="text" class="input-field" placeholder="请输入您的账号" required/>
+                </div>
+
+                <!-- 用户名 -->
+                <div>
+                    <label for="username" class="form-label">用户名</label>
+                    <input id="username" name="username" type="text" class="input-field" placeholder="请输入您的用户名" required/>
+                </div>
+
+                <!-- 电子邮件 -->
+                <div>
+                    <label for="email" class="form-label">电子邮件</label>
+                    <input id="email" name="email" type="email" class="input-field" placeholder="请输入您的电子邮件" required/>
+                </div>
+
+                <!-- 密码 -->
+                <div>
+                    <label for="password" class="form-label">密码</label>
+                    <input id="password" name="password" type="password" class="input-field" placeholder="请输入您的密码" required/>
+                </div>
+
+                <!-- 年龄 -->
+                <div>
+                    <label for="age" class="form-label">年龄</label>
+                    <input id="age" name="age" type="number" class="input-field" placeholder="请输入您的年龄" required/>
+                </div>
+
+                <!-- 性别 -->
+                <div>
+                    <label class="form-label">性别</label>
+                    <div class="flex space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="gender" value="male" class="form-radio" required/>
+                            <span class="ml-2">男</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="gender" value="female" class="form-radio" required/>
+                            <span class="ml-2">女</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 电话 -->
+                <div>
+                    <label for="tel" class="form-label">电话</label>
+                    <input id="tel" name="tel" type="tel" class="input-field" placeholder="请输入您的电话号码" required/>
+                </div>
+
+                <!-- 身份证号 -->
+                <div>
+                    <label for="idcard" class="form-label">身份证号</label>
+                    <input id="idcard" name="idcard" type="text" class="input-field" placeholder="请输入您的身份证号" required/>
+                </div>
+
+                <!-- 家庭住址 -->
+                <div>
+                    <label for="address" class="form-label">家庭住址</label>
+                    <textarea id="address" name="address" class="input-field" rows="3" placeholder="请输入您的家庭住址" required></textarea>
+                </div>
+
+                <!-- 错误消息提示 -->
+                <div id="error" class="rounded-md bg-red-50 p-4" style="display: none;">
+                    <p class="text-sm text-red-700"></p>
+                </div>
+
+                <!-- 提交按钮 -->
+                <div>
+                    <button type="submit" class="btn-primary w-full">注册</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="card-footer">
+            <div class="text-center space-y-2">
+                <p class="text-sm text-gray-600">
+                    已经有账户？
+                    <a href="/login" class="link">立即登录</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

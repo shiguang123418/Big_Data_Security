@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统</title>
+    <link rel="stylesheet" href="/styles/roles.css">
+    <script src="/js/autojs.js"></script>
+    <script src="/js/roles.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>权限管理</h1>
+
+    <!-- 搜索和添加按钮区域 -->
+    <div class="header-actions">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="搜索角色名称">
+            <button class="search-btn" onclick="roleManager.handleSearch()">
+                <i class="icon-search"></i>搜索
+            </button>
+        </div>
+
+    </div>
+
+    <!-- 角色列表表格 -->
+    <div class="table-container">
+        <table id="roleTable">
+            <thead>
+            <tr>
+                <th>用户id</th>
+                <th>角色名称</th>
+                <th>状态</th>
+                <th>权限等级</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- 分页控件 -->
+    <div class="pagination">
+        <button onclick="roleManager.prevPage()">上一页</button>
+        <span id="currentPage">1</span> / <span id="totalPages">1</span>
+        <button onclick="roleManager.nextPage()">下一页</button>
+    </div>
+</div>
+
+<!-- 编辑/添加角色对话框 -->
+<div id="roleDialog" class="dialog">
+    <div class="dialog-content">
+        <h2 id="dialogTitle">编辑角色</h2>
+        <form id="roleForm" onsubmit="roleManager.handleSubmit(event)">
+
+            <div class="form-group">
+                <label for="roleName">角色名称：</label>
+                <input type="text" id="roleName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="roleStatus">状态：</label>
+                <select id="roleStatus">
+                    <option value="true">启用</option>
+                    <option value="false">禁用</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="primary" style="margin-right: 10px;">保存</button>
+                <button type="button" onclick="roleManager.closeDialog()">取消</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 权限管理对话框 -->
+<div id="permissionDialog" class="dialog">
+    <div class="dialog-content">
+        <h2>权限等级管理</h2>
+        <div id="permissionContent" class="permission-info"></div>
+        <div id="permissionRadios" class="permission-options"></div>
+        <div class="button-container">
+            <button onclick="roleManager.savePermissions()" class="primary" style="margin-right: 10px;">保存</button>
+            <button onclick="roleManager.closePermissionDialog()">取消</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

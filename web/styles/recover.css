@@ -1,0 +1,66 @@
+/* File upload styles */
+.file-upload-container {
+    margin-bottom: 20px;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #f3f4f6;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.file-label:hover {
+    background: #e5e7eb;
+    border-color: #9ca3af;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-text {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #4f46e5;
+    margin-top: 8px;
+    word-break: break-all;
+}
+
+/* Recovery button styles */
+.recover-btn {
+    position: relative;
+    width: 100%;
+    padding: 12px 24px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.recover-btn:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+}
+
+.recover-btn:not(:disabled):hover {
+    background: #4338ca;
+}
+
+.recover-btn:not(:disabled):active {
+    transform: scale(0.98);
+}

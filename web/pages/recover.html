@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据恢复</title>
+    <script src="/js/autojs.js"></script>
+    <link rel="stylesheet" href="/styles/recover.css">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="icon">
+            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+        </div>
+        <h1>数据恢复</h1>
+        <p class="description">请选择备份文件进行数据恢复</p>
+
+        <div class="file-upload-container">
+            <input type="file" id="file-upload" accept=".csv">
+            <label for="file-upload" class="file-label">
+                <span class="file-text">选择文件</span>
+            </label>
+            <p class="file-name"></p>
+        </div>
+
+        <button id="recover" class="recover-btn" disabled>
+            <span class="btn-text">上传并恢复</span>
+            <div class="spinner"></div>
+        </button>
+
+        <p class="note">支持从备份的 CSV 文件中恢复数据</p>
+    </div>
+</div>
+<script src="/js/recover.js"></script>
+</body>
+</html>

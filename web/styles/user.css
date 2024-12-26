@@ -1,0 +1,217 @@
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.search-container input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.search-container button,
+.add-user-btn {
+    padding: 8px 15px;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.search-container button:hover,
+.add-user-btn:hover {
+    background-color: #4a90e2;
+}
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.pagination button:hover {
+    background-color: #007B9A;
+}
+.dialog {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.dialog-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+}
+.dialog-content h2 {
+    margin-top: 0;
+}
+.dialog-content form {
+    display: grid;
+    gap: 10px;
+}
+.dialog-content input,
+.dialog-content textarea {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.dialog-content button {
+    padding: 8px 15px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.dialog-content button[type="button"] {
+    background-color: #f44336;
+}
+.dialog-content button:hover {
+    opacity: 0.8;
+}
+
+.btn {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+.view-btn {
+    background-color: #4a5568; /* Green */
+}
+
+.edit-btn {
+    background-color: #4a5568; /* Amber */
+}
+
+.delete-btn {
+    background-color: #4a5568; /* Red */
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.gender-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.dialog {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.dialog-content {
+    background-color: #fefefe;
+    margin: 2% auto; /* 将上边距从15%减少到2% */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* 增加宽度以容纳更多内容 */
+    max-width: 500px; /* 增加最大宽度 */
+    border-radius: 5px;
+    max-height: 90vh; /* 设置最大高度为视口高度的90% */
+    overflow-y: auto; /* 如果内容超出，则显示垂直滚动条 */
+}
+
+.dialog-content form {
+    display: grid;
+    gap: 15px; /* 增加表单元素之间的间距 */
+}
+
+.dialog-content input,
+.dialog-content textarea {
+    width: 100%; /* 使输入框占满容器宽度 */
+    padding: 10px; /* 增加内边距 */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* 确保padding不会增加总宽度 */
+}
+
+.dialog-content button {
+    padding: 10px 15px;
+    margin-top: 10px; /* 为按钮添加上边距 */
+}
+
+/* 调整性别选项的布局 */
+.gender-options {
+    display: flex;
+    gap: 20px;
+}
+
+/* 确保标签和输入框垂直对齐 */
+.dialog-content label {
+    display: block;
+    margin-bottom: 5px;
+}
+.table-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.data-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理系统</title>
+    <link href="/styles/common.css" rel="stylesheet">
+    <link href="/styles/index.css" rel="stylesheet">
+</head>
+<body>
+<div class="app">
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>用户管理系统</h2>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="pages/users.html" class="nav-link active">用户列表</a>
+            </li>
+            <li>
+                <a href="pages/roles.html" class="nav-link">权限管理</a>
+            </li>
+            <li>
+                <a href="pages/backup.html" class="nav-link">备份数据</a>
+            </li>
+            <li>
+                <a href="pages/recover.html" class="nav-link">恢复数据</a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <button id="profileButton" class="profile-btn">个人主页</button>
+            <button id="logoutButton" class="logout-btn">退出登录</button>
+        </div>
+    </nav>
+    <main class="main-content" id="mainContent">
+        <!-- 内容将通过 iframe 加载 -->
+        <iframe id="contentFrame" name="contentFrame" src="pages/users.html"></iframe>
+    </main>
+</div>
+<div id="currentUser" class="current-user"></div>
+<script src="/js/autojs.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>备份数据</title>
+    <script src="/js/autojs.js"></script>
+    <link rel="stylesheet" href="/styles/backup.css">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="icon">
+            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+        </div>
+        <h1>数据备份</h1>
+        <p class="description">点击下方按钮开始下载用户数据备份文件</p>
+        <button id="backup" class="download-btn">
+            <span class="btn-text">开始备份</span>
+            <div class="spinner"></div>
+        </button>
+        <p class="note">文件将以 CSV 格式下载，可使用 Excel 或其他表格软件打开</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            const userData =JSON.parse(sessionStorage.getItem('user'));
+            const role=parseInt(userData.role);
+
+            if (role<0) {
+                alert('您的权限被禁用，请联系超级管理员');
+                location.href = './users.html';
+                return;
+            } else if (role!=1) {
+                alert('权限不足，只有超级管理员可以备份');
+                location.href = './users.html';
+                return;
+            }
+        } catch (error) {
+            console.error('检查用户权限失败:', error);
+            alert('权限检查失败，请重试');
+        }
+    });
+
+
+    const button = document.getElementById('backup');
+    const btnText = button.querySelector('.btn-text');
+    const spinner = button.querySelector('.spinner');
+
+    button.addEventListener('click', async () => {
+        try {
+            button.classList.add('loading');
+            btnText.textContent = '正在准备下载...';
+
+            const response = await fetch(SERVER_URL+'/backup', {
+                method: 'GET',
+                credentials: 'include'
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const contentDisposition = response.headers.get('Content-Disposition');
+            const filename = contentDisposition ?
+                contentDisposition.split('filename=')[1].replace(/"/g, '') :
+                'users_backup.csv';
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+
+            button.classList.add('success');
+            btnText.textContent = '下载成功！';
+
+            setTimeout(() => {
+                button.classList.remove('loading', 'success');
+                btnText.textContent = '开始备份';
+            }, 2000);
+
+        } catch (error) {
+            console.error('Download failed:', error);
+            button.classList.add('error');
+            btnText.textContent = '下载失败，请重试';
+
+            setTimeout(() => {
+                button.classList.remove('loading', 'error');
+                btnText.textContent = '开始备份';
+            }, 2000);
+        }
+    });
+</script>
+</body>
+</html>
